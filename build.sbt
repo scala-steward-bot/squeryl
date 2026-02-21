@@ -41,7 +41,7 @@ val commonSettings = Def.settings(
   crossScalaVersions := Seq(Scala212, "2.13.18", "3.3.7"),
   Compile / doc / scalacOptions ++= {
     val base = (LocalRootProject / baseDirectory).value.getAbsolutePath
-    val hash = sys.process.Process("git rev-parse HEAD").lineStream_!.head
+    val hash = sys.process.Process("git rev-parse HEAD").lazyLines_!.head
     Seq(
       "-sourcepath",
       base,
