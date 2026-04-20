@@ -198,10 +198,6 @@ lazy val squeryl = project
         f
       }
     },
-    Compile / packageSrc / mappings ++= (Compile / managedSources).value.map { f =>
-      // to merge generated sources into sources.jar as well
-      (f, f.relativeTo((Compile / sourceManaged).value).get.getPath)
-    }
   )
   .dependsOn(macros)
   .aggregate(macros)
